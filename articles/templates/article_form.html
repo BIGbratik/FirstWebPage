@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Создать статью</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/article.css">
+</head>
+
+<body>
+    <div class="header">
+        <img class="article_img" src="{{ STATIC_URL }}/static/images/lonely_spaceman.jpg" alt="Одинокий космонавт">
+    </div>
+    <div class="content">
+        <h1>Создание новой статьи</h1>
+        <form class="article_form" method="POST">{% csrf_token %}
+            <h4>Заголовок статьи</h4>
+            <input type="text" name="title" placeholder="Название статьи" value="{{ form.title }}">
+            <h4>Содержание статьи</h4>
+            <textarea name="text" placeholder="Текст статьи">{{ form.text }}</textarea>
+            <input type="submit" value="Сохранить">
+        </form>
+        {{ form.errors }}
+    </div>
+</body>
+
+</html>

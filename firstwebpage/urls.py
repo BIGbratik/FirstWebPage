@@ -23,5 +23,6 @@ urlpatterns = [
     path('home/',views.home,name='home'),
     path('', views.single_text, name='single_text'),
     path('archive/',views.archive, name='archive'),
-    re_path(r'^article/(?P<article_id>\d+)$', views.get_article, name='get_article')
+    re_path(r'^article/(?P<article_id>\d+)$', views.get_article, name='get_article'),
+    path('article/new',views.create_post, name="create_post")
 ]
