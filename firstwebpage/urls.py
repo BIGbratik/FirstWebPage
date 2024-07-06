@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from flatpages import views
 
 urlpatterns = [
@@ -23,4 +23,5 @@ urlpatterns = [
     path('home/',views.home,name='home'),
     path('', views.single_text, name='single_text'),
     path('archive/',views.archive, name='archive'),
+    re_path(r'^article/(?P<article_id>\d+)$', views.get_article, name='get_article')
 ]

@@ -1,0 +1,22 @@
+body {
+    background: #2ce2ac;
+    font-family: Tahoma, Arial, sans-serif;
+    color: #ffffff;
+    }
+
+    h1 {
+        font-family: 'Times New Roman', Times, serif;
+    }
+    h4 {
+    font-size: 20px;
+    margin-bottom: 0;
+    }
+    p {
+    font-size: 14px;
+    }
+    .header img {
+        display: block;
+        width: 318px;
+        margin-left: auto;
+        margin-right: auto;
+        }
