@@ -3,12 +3,12 @@
 
 <head>
     <title>Архив статей</title>
-    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/index.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/article.css">
 </head>
 
 <body>
     <div class="header">
-        <img src="{{ STATIC_URL }}/static/images/lonely_spaceman.jpg" alt="Одинокий космонавт">
+        <img class="archive_img" src="{{ STATIC_URL }}/static/images/lonely_spaceman.jpg" alt="Одинокий космонавт">
     </div>
     <div class="archive">
         {% for post in posts %}

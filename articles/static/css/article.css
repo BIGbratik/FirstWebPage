@@ -1,22 +1,53 @@
 body {
-    background: #2ce2ac;
+    background: #21b186;
     font-family: Tahoma, Arial, sans-serif;
     color: #ffffff;
-    }
+}
 
-    h1 {
-        font-family: 'Times New Roman', Times, serif;
-    }
-    h4 {
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h4 {
     font-size: 20px;
     margin-bottom: 0;
-    }
-    p {
+}
+
+p {
     font-size: 14px;
-    }
-    .header img {
-        display: block;
-        width: 318px;
-        margin-left: auto;
-        margin-right: auto;
-        }
+}
+
+.header .archive_img {
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.article_img {
+    width: 100px;
+    margin-left: 0;
+}
+
+.archive_ref {
+    float: right;
+}
+
+.article-author {
+    width: 50%;
+    float: left;
+}
+
+.article-created-date {
+    text-align: right;
+}
+
+.archive {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    color: #ffffff;
+}

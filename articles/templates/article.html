@@ -8,9 +8,10 @@
 
 <body>
     <div class="header">
-        <img src="{{ STATIC_URL }}/static/images/lonely_spaceman.jpg" alt="Одинокий космонавт">
+        <img class="article_img" src="{{ STATIC_URL }}/static/images/lonely_spaceman.jpg" alt="Одинокий космонавт">
+        <a class="archive_ref" href="/archive">Все статьи</a>
     </div>
-    <div class="archive">
+    <div class="article">
             <div class="one-post">
                 <h2 class="post-title">{{ post.title }}</h2>
                 <div class="article-info">
