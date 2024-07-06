@@ -3,6 +3,7 @@
 
 <head>
     <title>Привет, Мир!</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/index.css">
 </head>
 
 <body>
@@ -29,8 +30,9 @@
             <li>последний элемент.</li>
         </ol>
     </p>
+    <img src = "{{ STATIC_URL }}/static/images/lonely_spaceman.jpg" alt="Одинокий космонавт">
     <p>И даже таблица:</p>
-    <table style="border: solid">
+    <table>
         <thead>
             <tr>
                 <th>Столбик 1</th>
