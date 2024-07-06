@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django import template
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login
 from articles.models import Article
 
 def home(request):
@@ -63,10 +64,10 @@ def register(request):
             try:
                 User.objects.get(username=form["login"])
                 form['errors'] = u"Такой логин уже зарегестрирован"
-                return render(request, 'register_form.html', {})
+                return render(request, 'register_form.html', {'form': form})
             except:
                 # если поля заполнены без ошибок
-                article = User.objects.create_user(form["login"],form["email"],form["password"])
+                User.objects.create_user(form["login"],form["email"],form["password"])
                 # переход в архив
                 return redirect('archive')
         else:
@@ -76,3 +77,30 @@ def register(request):
     else:
         # просто вернуть страницу с формой, если метод GET
         return render(request, 'register_form.html', {})
+
+def auth(request):
+    if request.method == "POST":
+        # обработать данные формы, если метод POST
+        form = {
+            'login': request.POST["login"],
+            'password': request.POST["password"]
+        }
+        # в словаре form будет храниться информация, введенная пользователем
+        if form["login"] and form["password"]:
+                user = authenticate(username=form["login"], password=form["password"])
+                
+                if user:
+                    # если поля заполнены без ошибок
+                    login(request, user)
+                    # переход в архив
+                    return redirect('archive')
+                else:
+                    form['errors'] = u"Введённые данные неверны"
+                    return render(request, 'auth_form.html', {'form': form})
+        else:   
+            # если введенные данные некорректны
+            form['errors'] = u"Не все поля заполнены"
+            return render(request, 'auth_form.html', {'form': form})
+    else:
+        # просто вернуть страницу с формой, если метод GET
+        return render(request, 'auth_form.html', {})

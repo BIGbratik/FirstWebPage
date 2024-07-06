@@ -56,7 +56,7 @@ a {
     color: #ffffff;
 }
 
-.article_form, .register_form {
+form {
     display: block;
     width: 300px;
     margin-left: 0;
