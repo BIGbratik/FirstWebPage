@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django import template
+from django.contrib.auth.models import User
 from articles.models import Article
 
 def home(request):
@@ -29,13 +30,15 @@ def create_post(request):
             }
             # в словаре form будет храниться информация, введенная пользователем
             if form["text"] and form["title"]:
-                if Article.objects.get(title=form["title"]):
+                try:
+                    Article.objects.get(title=form["title"])
                     # если навзание статьи не уникально
                     form['errors'] = u"Статья с таким названием уже есть"
                     return render(request, 'article_form.html', {'form': form})
-                # если поля заполнены без ошибок
-                article = Article.objects.create(text=form["text"], title=form["title"], author=request.user)
-                return redirect('get_article', article_id=article.id)
+                except:
+                    # если поля заполнены без ошибок
+                    article = Article.objects.create(text=form["text"], title=form["title"], author=request.user)
+                    return redirect('get_article', article_id=article.id)
             # перейти на страницу поста
             else:
                 # если введенные данные некорректны
@@ -46,3 +49,30 @@ def create_post(request):
             return render(request, 'article_form.html', {})
     else:
         raise Http404
+
+def register(request):
+    if request.method == "POST":
+        # обработать данные формы, если метод POST
+        form = {
+            'login': request.POST["login"], 
+            'email': request.POST["email"],
+            'password': request.POST["password"]
+        }
+        # в словаре form будет храниться информация, введенная пользователем
+        if form["login"] and form["email"] and form["password"]:
+            try:
+                User.objects.get(username=form["login"])
+                form['errors'] = u"Такой логин уже зарегестрирован"
+                return render(request, 'register_form.html', {})
+            except:
+                # если поля заполнены без ошибок
+                article = User.objects.create_user(form["login"],form["email"],form["password"])
+                # переход в архив
+                return redirect('archive')
+        else:
+            # если введенные данные некорректны
+            form['errors'] = u"Не все поля заполнены"
+            return render(request, 'register_form.html', {'form': form})
+    else:
+        # просто вернуть страницу с формой, если метод GET
+        return render(request, 'register_form.html', {})

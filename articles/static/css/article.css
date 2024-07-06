@@ -1,7 +1,3 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-  }
-
 body {
     background: #21b186;
     font-family: Tahoma, Arial, sans-serif;
@@ -33,8 +29,12 @@ p {
     margin-left: 0;
 }
 
-.ref{
+.header_func
+{
+    display: block;
     float: right;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .article-author {
@@ -56,7 +56,7 @@ a {
     color: #ffffff;
 }
 
-.article_form {
+.article_form, .register_form {
     display: block;
     width: 300px;
     margin-left: 0;
