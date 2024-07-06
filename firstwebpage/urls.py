@@ -21,5 +21,6 @@ from flatpages import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('home/',views.home,name='home'),
-    path('', views.single_text, name='single_text')
+    path('', views.single_text, name='single_text'),
+    path('archive/',views.archive, name='archive'),
 ]
